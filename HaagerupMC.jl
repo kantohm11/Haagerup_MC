@@ -24,7 +24,7 @@ end
 function simulate(params, name_dir)
     @unpack nu, zeta, N, A, height, width, niter, ival, rec_int, mdist, mpts, n_therm = params
     is_inv(s) = (s <= nu-1) # whther invertible or not
-    m :: Int, n :: Int = height, width # just for brevity
+    m :: Int, n :: Int = width, height # just for brevity
     dual(s) = ifelse(is_inv(s),mod(-s,nu),s) # dual of s
     qdim(s) = ifelse(is_inv(s),1,zeta); # quantum dimension
     function W_plaq(x :: Int,z :: Int,y :: Int,yp :: Int)::Float64
