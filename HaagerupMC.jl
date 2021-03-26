@@ -11,7 +11,7 @@ using InteractiveUtils
     zeta ::Float64 = (nu+sqrt(nu^2+4))/2 # qdim(v) for non-invertible v
     N :: Int = 2*nu # number of simples
     A :: Float64 = 1.0 #The unisotropy parameter in AFM model
-    height :: Int # Higher of the lattice
+    height :: Int # Highet of the lattice
     width :: Int # width of the lattice
     niter :: Int
     ival :: Int = nu #initial value
@@ -22,6 +22,7 @@ using InteractiveUtils
 end
 
 function simulate(params, name_dir)
+    # variables: 0,1,.. nu-1: invertible ones. nu,nu+1, .. N: non-invertible ones.  N = 2 nu.
     @unpack nu, zeta, N, A, height, width, niter, ival, rec_int, mdist, mpts, n_therm = params
     is_inv(s) = (s <= nu-1) # whther invertible or not
     m :: Int, n :: Int = width, height # just for brevity
